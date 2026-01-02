@@ -56,7 +56,7 @@ function updateContactInfo() {
 
 // Функція копіювання номера
 function copyPhoneNumber() {
-    const phoneNumber = '+380984313316';
+    const phoneNumber = '+380684312014';
     const copyMessage = document.getElementById('copyMessage');
     
     navigator.clipboard.writeText(phoneNumber).then(() => {

@@ -41,7 +41,7 @@ function scrollToSection(sectionId) {
 
 // Функція оновлення контактів (щоб дані завжди були актуальні)
 function updateContactInfo() {
-    const phone = '+38 098 431 33 16';
+    const phone = '+380684312014';
     const address = 'м. Новояворівськ, вул. Степана Бандери, №1-A, приміщення 158';
     const schedule = 'Пн-Пт: 09:00-18:00 (перерва 13:00-14:00)';
 

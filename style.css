@@ -335,14 +335,18 @@ h2 {
     margin-right: 8px;
 }
 
-/* Map */
+/* Map Section - ОНОВЛЕНІ СТИЛІ */
 .map-section {
     margin-top: 3rem;
+    padding: 2rem;
+    background: #f8f9fa;
+    border-radius: 10px;
 }
 
 .map-section h3 {
     color: #2c3e50;
     margin-bottom: 0.5rem;
+    font-size: 1.5rem;
 }
 
 .map-section p {
@@ -350,45 +354,58 @@ h2 {
     margin-bottom: 1.5rem;
 }
 
-.map-container {
-    margin-top: 1rem;
-}
-
-.map-link {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-}
-
-.map-link:hover .map-placeholder {
-    background: #e8f4fe;
-    border-color: #3498db;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-.map-placeholder {
-    height: 200px;
-    background: #f8f9fa;
+.google-map {
     border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    margin: 20px 0;
+}
+
+.map-wrapper {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%; /* 16:9 співвідношення сторін */
+}
+
+.map-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.map-links {
     display: flex;
-    flex-direction: column;
+    gap: 15px;
     justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.map-btn {
+    display: inline-flex;
     align-items: center;
-    color: #666;
-    border: 2px dashed #ddd;
-    transition: all 0.3s ease;
-    cursor: pointer;
+    gap: 8px;
+    padding: 10px 20px;
+    background: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: all 0.3s;
+    font-size: 0.9rem;
 }
 
-.map-placeholder p {
-    margin: 5px 0;
-    text-align: center;
+.map-btn:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
 }
 
-.map-placeholder p:first-child {
-    font-weight: bold;
-    color: #3498db;
+.map-btn i {
     font-size: 1.1rem;
 }
 
@@ -482,6 +499,14 @@ footer {
     background-color: rgba(255,255,255,0.1);
 }
 
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    color: #bdc3c7;
+    font-size: 0.9rem;
+}
 
 /* Responsive - Media Queries */
 @media (max-width: 768px) {
@@ -552,6 +577,26 @@ footer {
     .contact-item, .contact-simple {
         padding: 1.2rem;
     }
+    
+    .map-section {
+        padding: 1.5rem;
+        margin-top: 2rem;
+    }
+    
+    .map-links {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .map-btn {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+    }
+    
+    .google-map {
+        margin: 15px 0;
+    }
 }
 
 @media (max-width: 480px) {
@@ -589,8 +634,17 @@ footer {
         gap: 5px;
     }
     
-    .copy-btn {
-        align-self: flex-start;
+    .map-section {
+        padding: 1rem;
+    }
+    
+    .map-section h3 {
+        font-size: 1.3rem;
+    }
+    
+    .map-btn {
+        padding: 8px 15px;
+        font-size: 0.85rem;
     }
 }
 
@@ -612,43 +666,24 @@ footer {
     .contact-option span {
         font-size: 0.9rem;
     }
+    
+    .map-btn {
+        font-size: 0.8rem;
+    }
+    
+    .map-section {
+        padding: 0.8rem;
+    }
 }
 
-
-/* Стилі для реальної Google Maps */
-.google-map {
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    margin-bottom: 20px;
-}
-
-.map-links {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 20px;
-}
-
-.map-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 20px;
-    background: #3498db;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: 500;
-    transition: all 0.3s;
-}
-
-.map-btn:hover {
-    background: #2980b9;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
-}
-
-.map-btn i {
-    font-size: 1.1rem;
+/* Спеціальні стилі для дуже вузьких екранів */
+@media (max-width: 320px) {
+    .map-btn {
+        padding: 6px 12px;
+        font-size: 0.75rem;
+    }
+    
+    .map-section h3 {
+        font-size: 1.2rem;
+    }
 }

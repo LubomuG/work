@@ -9,12 +9,38 @@ body {
     line-height: 1.6;
     color: #333;
     scroll-behavior: smooth;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+}
+
+/* Кнопка перемикання теми */
+.theme-toggle {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    border: none;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: #2d3436;
+    z-index: 999;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
 }
 
 /* Header & Navigation */
@@ -25,6 +51,7 @@ body {
     width: 100%;
     top: 0;
     z-index: 1000;
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 .nav-container {
@@ -40,6 +67,7 @@ body {
 .logo h2 {
     color: #2c3e50;
     font-size: 1.5rem;
+    transition: color 0.3s;
 }
 
 .nav-menu {
@@ -80,6 +108,7 @@ body {
     color: white;
     padding: 150px 0 100px;
     text-align: center;
+    transition: background 0.3s;
 }
 
 .hero-content h1 {
@@ -138,6 +167,7 @@ body {
 /* Sections */
 section {
     padding: 80px 0;
+    transition: background-color 0.3s;
 }
 
 h2 {
@@ -145,6 +175,7 @@ h2 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
     color: #2c3e50;
+    transition: color 0.3s;
 }
 
 .section-subtitle {
@@ -155,11 +186,13 @@ h2 {
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+    transition: color 0.3s;
 }
 
 /* Services */
 .services {
     background: #f8f9fa;
+    transition: background-color 0.3s;
 }
 
 .services-grid {
@@ -175,7 +208,7 @@ h2 {
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     text-align: center;
-    transition: transform 0.3s;
+    transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
 }
 
 .service-card:hover {
@@ -186,16 +219,19 @@ h2 {
     color: #2c3e50;
     margin-bottom: 1rem;
     font-size: 1.3rem;
+    transition: color 0.3s;
 }
 
 .service-card p {
     color: #666;
     line-height: 1.6;
+    transition: color 0.3s;
 }
 
 /* Contact */
 .contact {
     background: white;
+    transition: background-color 0.3s;
 }
 
 .contact-content {
@@ -210,17 +246,20 @@ h2 {
     padding: 1.5rem;
     background: #f8f9fa;
     border-radius: 10px;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .contact-item h3 {
     color: #2c3e50;
     margin-bottom: 0.5rem;
     font-size: 1.2rem;
+    transition: color 0.3s;
 }
 
 .contact-item p {
     color: #666;
     margin-bottom: 0.5rem;
+    transition: color 0.3s;
 }
 
 /* Phone container styles */
@@ -238,7 +277,7 @@ h2 {
     cursor: pointer;
     padding: 5px 10px;
     border-radius: 5px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, color 0.3s;
     display: inline-block;
 }
 
@@ -294,16 +333,19 @@ h2 {
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 .contact-simple h3 {
     color: #2c3e50;
     margin-bottom: 0.5rem;
+    transition: color 0.3s;
 }
 
 .contact-simple p {
     color: #666;
     margin-bottom: 1.5rem;
+    transition: color 0.3s;
 }
 
 .contact-options {
@@ -341,17 +383,20 @@ h2 {
     padding: 2rem;
     background: #f8f9fa;
     border-radius: 10px;
+    transition: background-color 0.3s;
 }
 
 .map-section h3 {
     color: #2c3e50;
     margin-bottom: 0.5rem;
     font-size: 1.5rem;
+    transition: color 0.3s;
 }
 
 .map-section p {
     color: #666;
     margin-bottom: 1.5rem;
+    transition: color 0.3s;
 }
 
 .google-map {
@@ -414,6 +459,7 @@ footer {
     background: #2c3e50;
     color: white;
     padding: 3rem 0 1rem;
+    transition: background-color 0.3s;
 }
 
 .footer-content {
@@ -508,6 +554,113 @@ footer {
     font-size: 0.9rem;
 }
 
+/* Стилі для темної теми */
+body.dark-theme {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+}
+
+body.dark-theme .navbar {
+    background: #2c2c2c;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+body.dark-theme .logo h2 {
+    color: #e0e0e0;
+}
+
+body.dark-theme .nav-link {
+    color: #e0e0e0;
+}
+
+body.dark-theme .hamburger span {
+    background: #e0e0e0;
+}
+
+body.dark-theme .hero {
+    background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+}
+
+body.dark-theme .services {
+    background: #2c2c2c;
+}
+
+body.dark-theme h2 {
+    color: #e0e0e0;
+}
+
+body.dark-theme .section-subtitle {
+    color: #b0b0b0;
+}
+
+body.dark-theme .service-card {
+    background: #333;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+body.dark-theme .service-card h3 {
+    color: #e0e0e0;
+}
+
+body.dark-theme .service-card p {
+    color: #b0b0b0;
+}
+
+body.dark-theme .contact {
+    background: #2c2c2c;
+}
+
+body.dark-theme .contact-item {
+    background: #333;
+}
+
+body.dark-theme .contact-item h3 {
+    color: #e0e0e0;
+}
+
+body.dark-theme .contact-item p {
+    color: #b0b0b0;
+}
+
+body.dark-theme .phone-text {
+    color: #4da6ff;
+}
+
+body.dark-theme .contact-simple {
+    background: #333;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+body.dark-theme .contact-simple h3 {
+    color: #e0e0e0;
+}
+
+body.dark-theme .contact-simple p {
+    color: #b0b0b0;
+}
+
+body.dark-theme .contact-option {
+    background: #3a3a3a;
+    color: #e0e0e0;
+    border-color: #555;
+}
+
+body.dark-theme .map-section {
+    background: #333;
+}
+
+body.dark-theme .map-section h3 {
+    color: #e0e0e0;
+}
+
+body.dark-theme .map-section p {
+    color: #b0b0b0;
+}
+
+body.dark-theme footer {
+    background: #222;
+}
+
 /* Responsive - Media Queries */
 @media (max-width: 768px) {
     .hamburger {
@@ -526,6 +679,10 @@ footer {
         box-shadow: 0 10px 27px rgba(0,0,0,0.05);
         padding: 2rem 0;
         gap: 0;
+    }
+    
+    body.dark-theme .nav-menu {
+        background-color: #2c2c2c;
     }
     
     .nav-menu.active {
@@ -597,6 +754,13 @@ footer {
     .google-map {
         margin: 15px 0;
     }
+    
+    .theme-toggle {
+        top: 80px;
+        right: 15px;
+        width: 45px;
+        height: 45px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -645,6 +809,14 @@ footer {
     .map-btn {
         padding: 8px 15px;
         font-size: 0.85rem;
+    }
+    
+    .theme-toggle {
+        top: 75px;
+        right: 10px;
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
     }
 }
 

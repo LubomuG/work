@@ -22,6 +22,19 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    // Ініціалізація теми
+    initializeTheme();
+
+    // Обробка кнопки перемикання теми
+    const themeBtn = document.getElementById('themeBtn');
+    if (themeBtn) {
+        themeBtn.addEventListener('click', function() {
+            let currentTheme = document.body.classList.contains('dark-theme') ? 'dark' : 'light';
+            let newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            setTheme(newTheme);
+        });
+    }
 });
 
 // Функція для плавного скролу
@@ -68,6 +81,39 @@ function copyPhoneNumber() {
     }).catch(err => {
         console.error('Помилка копіювання', err);
     });
+}
+
+// Функція встановлення теми
+function setTheme(theme) {
+    const themeBtn = document.getElementById('themeBtn');
+    const icon = themeBtn.querySelector('i');
+    
+    if (theme === 'dark') {
+        document.body.classList.add('dark-theme');
+        icon.className = 'fas fa-sun';
+        themeBtn.style.backgroundColor = '#f5f6fa';
+        themeBtn.style.color = '#2d3436';
+    } else {
+        document.body.classList.remove('dark-theme');
+        icon.className = 'fas fa-moon';
+        themeBtn.style.backgroundColor = '#ffffff';
+        themeBtn.style.color = '#2d3436';
+    }
+    localStorage.setItem('theme', theme);
+}
+
+// Функція ініціалізації теми
+function initializeTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (savedTheme) {
+        setTheme(savedTheme);
+    } else if (prefersDark) {
+        setTheme('dark');
+    } else {
+        setTheme('light');
+    }
 }
 
 // Експорт функцій у глобальну область

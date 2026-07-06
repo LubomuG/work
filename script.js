@@ -1,18 +1,17 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Оновлюємо дані при завантаженні
     updateContactInfo();
+    loadAnnouncement();
 
-    // Обробка мобільного меню (бургер)
     const hamburger = document.querySelector(".hamburger");
     const navMenu = document.querySelector(".nav-menu");
 
     if (hamburger) {
         hamburger.addEventListener("click", () => {
             navMenu.classList.toggle("active");
+            hamburger.classList.toggle("active");
         });
     }
-    
-    // Обробка навігаційних посилань
+
     document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
@@ -23,10 +22,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Ініціалізація теми
     initializeTheme();
 
-    // Обробка кнопки перемикання теми
     const themeBtn = document.getElementById('themeBtn');
     if (themeBtn) {
         themeBtn.addEventListener('click', function() {
@@ -37,22 +34,20 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Функція для плавного скролу
 function scrollToSection(sectionId) {
     const section = document.getElementById(sectionId);
     if (section) {
         section.scrollIntoView({ behavior: 'smooth' });
     }
-    
-    // Закриваємо мобільне меню після кліку
+
     const navMenu = document.querySelector(".nav-menu");
     const hamburger = document.querySelector(".hamburger");
     if (navMenu.classList.contains('active')) {
         navMenu.classList.remove('active');
+        hamburger.classList.remove('active');
     }
 }
 
-// Функція оновлення контактів (щоб дані завжди були актуальні)
 function updateContactInfo() {
     const phone = '+380684312014';
     const address = 'м. Новояворівськ, вул. Степана Бандери, №1-A, приміщення 158';
@@ -67,11 +62,10 @@ function updateContactInfo() {
     if (scheduleElem) scheduleElem.textContent = schedule;
 }
 
-// Функція копіювання номера
 function copyPhoneNumber() {
     const phoneNumber = '+380684312014';
     const copyMessage = document.getElementById('copyMessage');
-    
+
     navigator.clipboard.writeText(phoneNumber).then(() => {
         if (copyMessage) {
             copyMessage.textContent = 'Номер скопійовано!';
@@ -83,11 +77,10 @@ function copyPhoneNumber() {
     });
 }
 
-// Функція встановлення теми
 function setTheme(theme) {
     const themeBtn = document.getElementById('themeBtn');
     const icon = themeBtn.querySelector('i');
-    
+
     if (theme === 'dark') {
         document.body.classList.add('dark-theme');
         icon.className = 'fas fa-sun';
@@ -102,11 +95,10 @@ function setTheme(theme) {
     localStorage.setItem('theme', theme);
 }
 
-// Функція ініціалізації теми
 function initializeTheme() {
     const savedTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
+
     if (savedTheme) {
         setTheme(savedTheme);
     } else if (prefersDark) {
@@ -116,18 +108,42 @@ function initializeTheme() {
     }
 }
 
-// Експорт функцій у глобальну область
+function loadAnnouncement() {
+    const banner = document.getElementById('announcementBanner');
+    const textElem = document.getElementById('announcementText');
+
+    if (!banner || !textElem) return;
+
+    fetch('announce.txt?t=' + Date.now())
+        .then(response => {
+            if (!response.ok) throw new Error('Файл оголошення не знайдено');
+            return response.text();
+        })
+        .then(text => {
+            const trimmed = text.trim();
+            if (trimmed.length > 0) {
+                textElem.textContent = trimmed;
+                banner.classList.add('visible');
+            } else {
+                banner.classList.remove('visible');
+            }
+        })
+        .catch(() => {
+            banner.classList.remove('visible');
+        });
+}
+
 window.scrollToSection = scrollToSection;
 window.copyPhoneNumber = copyPhoneNumber;
 
-// Закриття мобільного меню при кліку поза ним
 document.addEventListener('click', function(event) {
     const navMenu = document.querySelector(".nav-menu");
     const hamburger = document.querySelector(".hamburger");
-    
-    if (navMenu.classList.contains('active') && 
-        !event.target.closest('.nav-menu') && 
+
+    if (navMenu.classList.contains('active') &&
+        !event.target.closest('.nav-menu') &&
         !event.target.closest('.hamburger')) {
         navMenu.classList.remove('active');
+        hamburger.classList.remove('active');
     }
 });
